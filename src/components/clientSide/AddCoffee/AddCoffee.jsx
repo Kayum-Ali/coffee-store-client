@@ -7,7 +7,7 @@ const AddCoffee = () => {
             <div className="bg-[url('https://res.cloudinary.com/dqescabbl/image/upload/v1726378592/11_dc6zmw.png')]">
       <div className="container mx-auto py-10 lg:px-28   ">
         {/* breadcumbs */}
-        <div className="flex gap-5 items-center text-2xl py-5">
+        <div className="flex gap-5 items-center w-max px-3 rounded-md text-2xl py-5 hover:bg-[#D2B48C]">
           <FaLongArrowAltLeft></FaLongArrowAltLeft>
           <p className="drop-shadow-md ">Back to home</p>
         </div>
