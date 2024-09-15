@@ -1,7 +1,46 @@
-
-import { FaLongArrowAltLeft } from "react-icons/fa";
+import { FaLongArrowAltLeft } from 'react-icons/fa';
+import Swal from 'sweetalert2'
 
 const AddCoffee = () => {
+  
+  const handleSubmit = e =>{
+    e.preventDefault();
+    const name= e.target.name.value;
+    const chef= e.target.chef.value;
+    const supplier= e.target.supplier.value;
+    const taste= e.target.taste.value;
+    const details= e.target.details.value;
+    const photo= e.target.photo.value;
+    const category= e.target.category.value;
+   
+    const newCoffee= { name, chef, supplier, taste, category, photo, details, }
+    // add new coffee to database
+    fetch('http://localhost:5000/coffee', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newCoffee),
+    }).then(res => res.json())
+     .then(data => {
+          if(data.insertedId){
+            console.log(data)
+            Swal.fire({
+              title: 'success ',
+              text: 'Coffee added successfully  ',
+              icon: 'success',
+              confirmButtonText: 'Cool'
+            })
+           
+            
+          }
+     });
+    
+ 
+   
+    
+
+  }
     return (
         <div>
             <div className="bg-[url('https://res.cloudinary.com/dqescabbl/image/upload/v1726378592/11_dc6zmw.png')]">
@@ -26,7 +65,7 @@ const AddCoffee = () => {
             </p>
           </div>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <div  className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="flex flex-col space-y-2">
                 <label className="text-2xl pl-2" htmlFor="">
@@ -34,6 +73,9 @@ const AddCoffee = () => {
                 </label>
                 <input
                   type="text"
+                  required
+                  
+                  name="name"
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee name"
                 />
@@ -44,6 +86,8 @@ const AddCoffee = () => {
                 </label>
                 <input
                   type="text"
+                  required
+                   name="chef"
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee chef"
                 />
@@ -54,6 +98,8 @@ const AddCoffee = () => {
                 </label>
                 <input
                   type="text"
+                  required
+                   name="supplier"
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee supplier"
                 />
@@ -64,6 +110,8 @@ const AddCoffee = () => {
                 </label>
                 <input
                   type="text"
+                  required
+                   name="taste"
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee taste"
                 />
@@ -74,6 +122,8 @@ const AddCoffee = () => {
                 </label>
                 <input
                   type="text"
+                  name="category"
+                  required
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee category"
                 />
@@ -84,6 +134,8 @@ const AddCoffee = () => {
                 </label>
                 <input
                   type="text"
+                  required
+                  name="details"
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee details"
                 />
@@ -92,16 +144,23 @@ const AddCoffee = () => {
 
             <div className="flex flex-col space-y-2 w-full pt-3">
                         <label className="text-2xl pl-2" htmlFor="">Photo</label>
-                        <input type="text" className="outline-none p-3 rounded-md raleway w-full"  placeholder="Enter photo URL"/>
+                        <input 
+                        type="text"
+                        required
+                        name="photo"
+                         className="outline-none p-3 rounded-md raleway w-full"
+                           placeholder="Enter photo URL"/>
              </div>
 
              <div className="flex justify-center mt-3 text-2xl border border-[#331A15]  rounded-md">
+
                 <input type="submit" value={`Add Coffee`} className="bg-[#D2B48C]  rounded-md py-2.5 w-full"/>
               </div>
           </form>
         </div>
       </div>
     </div>
+   
 
             
         </div>

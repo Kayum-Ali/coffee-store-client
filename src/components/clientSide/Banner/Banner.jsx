@@ -14,8 +14,8 @@ const Banner = () => {
      </div>
 
         {/* category */}
-        <div className="bg-[#ECEAE3] py-10">
-        <div className="flex container mx-auto gap-5   "> 
+        <div className="bg-[#ECEAE3] py-10 px-5">
+        <div className="flex container flex-col lg:flex-row md:flex-row pl-20 lg:pl-0 md:pl-0 md:justify-center mx-auto gap-5   "> 
               <div className="space-y-2 flex-1">
                  <img src="https://res.cloudinary.com/dqescabbl/image/upload/v1726375667/1_wgn8hq.png" alt="" />
                  <h2 className="text-[#331A15] text-3xl">Awesome Aroma</h2>
