@@ -17,6 +17,7 @@ import AddCoffeePage from "../Pages/clientSide/AddCoffeePage";
         {
           path: "/",
           element:  <HomePage></HomePage>,
+          loader: ()=> fetch('http://localhost:5000/coffee')
         },
         {
           path: "/add-coffee",
