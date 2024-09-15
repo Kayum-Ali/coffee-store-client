@@ -8,7 +8,7 @@ const Navbar = () => {
        <li><NavLink to={`/update-coffee`}>Update Coffee</NavLink></li>
   </>
     return (
-     <div className="bg-[#ECEAE3]">
+     <div className="bg-[#ECEAE3] px-5">
       <div className="navbar container mx-auto ">
         <div className="navbar-start container mx-auto">
           <div className="dropdown">
