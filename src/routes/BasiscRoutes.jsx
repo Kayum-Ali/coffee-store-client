@@ -6,6 +6,7 @@ import {
   } from "react-router-dom";
 import HomePage from "../Pages/clientSide/HomePage";
 import MainLayout from "../layouts/MainLayout";
+import AddCoffeePage from "../Pages/clientSide/AddCoffeePage";
 
 
   const router = createBrowserRouter([
@@ -16,7 +17,12 @@ import MainLayout from "../layouts/MainLayout";
         {
           path: "/",
           element:  <HomePage></HomePage>,
+        },
+        {
+          path: "/add-coffee",
+          element: <AddCoffeePage></AddCoffeePage>,
         }
+
       ]
     },
   ]);
