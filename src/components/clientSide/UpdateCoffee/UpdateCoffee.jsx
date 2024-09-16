@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const UpdateCoffee = () => {
     const coffee = useLoaderData()
     const navigate = useNavigate()
-    const {_id, name, chef, supplier, taste, category, photo, details, }= coffee
+    
 
     const handleSubmit = e =>{
         e.preventDefault();
@@ -20,7 +20,7 @@ const UpdateCoffee = () => {
        
         const updatedCoffee = { name, chef, supplier, taste, category, photo, details }
         // add new coffee to database
-        fetch(`https://coffee-store-server-nfs3.vercel.app/coffee/${_id}`, {
+        fetch(`https://coffee-store-server-rouge-iota.vercel.app/coffee/${coffee?._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const UpdateCoffee = () => {
                   required
                   
                   name="name"
-                  defaultValue={name}
+                  defaultValue={coffee?.name}
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee name"
                 />
@@ -91,7 +91,7 @@ const UpdateCoffee = () => {
                 <input
                   type="text"
                   required
-                  defaultValue={chef}
+                  defaultValue={coffee?.chef}
                    name="chef"
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee chef"
@@ -104,7 +104,7 @@ const UpdateCoffee = () => {
                 <input
                   type="text"
                   required
-                  defaultValue={supplier}
+                  defaultValue={coffee?.supplier}
                    name="supplier"
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee supplier"
@@ -116,7 +116,7 @@ const UpdateCoffee = () => {
                 </label>
                 <input
                   type="text"
-                  defaultValue={taste}
+                  defaultValue={coffee?.taste}
                   required
                    name="taste"
                   className="outline-none p-3 rounded-md raleway"
@@ -130,7 +130,7 @@ const UpdateCoffee = () => {
                 <input
                   type="text"
                   name="category"
-                  defaultValue={category}
+                  defaultValue={coffee?.category}
                   required
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee category"
@@ -143,7 +143,7 @@ const UpdateCoffee = () => {
                 <input
                   type="text"
                   required
-                  defaultValue={details}
+                  defaultValue={coffee?.details}
                   name="details"
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee details"
@@ -156,7 +156,7 @@ const UpdateCoffee = () => {
                         <input 
                         type="text"
                         required
-                        defaultValue={photo}
+                        defaultValue={coffee?.photo}
                         name="photo"
                          className="outline-none p-3 rounded-md raleway w-full"
                            placeholder="Enter photo URL"/>

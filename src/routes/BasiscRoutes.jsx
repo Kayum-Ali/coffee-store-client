@@ -3,11 +3,11 @@
 import {
   createBrowserRouter,
 } from "react-router-dom";
+import CoffeeDetails from "../components/clientSide/CoffeeDatails/CoffeeDetails";
+import MainLayout from "../layouts/MainLayout";
 import AddCoffeePage from "../Pages/clientSide/AddCoffeePage";
 import HomePage from "../Pages/clientSide/HomePage";
 import UpdateCoffeePage from "../Pages/clientSide/UpdateCoffeePage";
-import CoffeeDetails from "../components/clientSide/CoffeeDatails/CoffeeDetails";
-import MainLayout from "../layouts/MainLayout";
 import ErrorPage from "../Pages/ErrorPage";
 
 
@@ -21,7 +21,7 @@ import ErrorPage from "../Pages/ErrorPage";
         {
           path: "/",
           element:  <HomePage></HomePage>,
-          loader: ()=> fetch('https://coffee-store-server-nfs3.vercel.app/coffee')
+          
         },
         {
           path: "/add-coffee",
@@ -30,12 +30,12 @@ import ErrorPage from "../Pages/ErrorPage";
         {
           path: "/update-coffee/:id",
           element: <UpdateCoffeePage></UpdateCoffeePage>,
-          loader: ({params})=> fetch(`https://coffee-store-server-nfs3.vercel.app/coffee/${params.id}`)
+          loader: ({params})=> fetch(`https://coffee-store-server-rouge-iota.vercel.app/coffee/${params.id}`)
         },
         {
           path: '/coffee-details/:id',
           element: <CoffeeDetails></CoffeeDetails>,
-          loader: ({params})=> fetch(`https://coffee-store-server-nfs3.vercel.app/coffee/${params.id}`)
+          loader: ({params})=> fetch(`https://coffee-store-server-rouge-iota.vercel.app/coffee/${params.id}`)
         }
 
       ]

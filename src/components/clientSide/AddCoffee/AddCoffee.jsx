@@ -19,7 +19,7 @@ const AddCoffee = () => {
 
     const newCoffee = { name, chef, supplier, taste, category, photo, details };
     // add new coffee to database
-    fetch("https://coffee-store-server-nfs3.vercel.app/coffee", {
+    fetch("https://coffee-store-server-rouge-iota.vercel.app/coffee", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
