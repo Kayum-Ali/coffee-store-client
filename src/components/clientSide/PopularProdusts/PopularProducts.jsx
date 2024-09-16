@@ -20,7 +20,7 @@ const PopularProducts = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 z-10 py-10 px-5 lg:px-0">
                     {
-                        coffeed.map(coffee=> <CoffeeCard key={coffee._id}
+                        coffeed?.map(coffee=> <CoffeeCard key={coffee._id}
                              coffee={coffee}
                              coffeed={coffeed}
                              setCoffeed={setCoffeed}
