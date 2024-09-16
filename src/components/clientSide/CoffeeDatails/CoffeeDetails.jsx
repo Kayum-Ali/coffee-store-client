@@ -18,24 +18,24 @@ const CoffeeDetails = () => {
 
         {/* add coffee */}
         <div className="bg-[#F4F3F0] rounded-md p-14">
-            <div className="flex">
+            <div className="flex flex-col md:flex-row lg:flex-row">
                   <div className="flex-1 text-center flex items-center">
                        <img className="mx-auto " src={coffee.photo} alt="" />
                   </div>
                   <div className="flex-1 pt-5 *:text-black *:text-xl raleway  space-y-2">
                       <h2 className="text-[#331A15] font-bold text-3xl rancho-regular">Niceties</h2>
-                      <p className="">Name: <span className="text-[#5C5B5B]"> {coffee.name}</span> </p>
+                      <p className="font-bold">Name: <span className="text-[#5C5B5B] font-normal"> {coffee.name}</span> </p>
 
-                      <p>Chef: <span className="text-[#5C5B5B]"> {coffee.chef}</span>  </p>
+                      <p className="font-bold">Chef: <span className= "font-normal text-[#5C5B5B]"> {coffee.chef}</span>  </p>
 
 
-                      <p>Supplier: <span className="text-[#5C5B5B]"> {coffee.supplier}</span> </p>
+                      <p className="font-bold">Supplier: <span className="text-[#5C5B5B] font-normal"> {coffee.supplier}</span> </p>
 
-                      <p>Taste: <span className="text-[#5C5B5B]"> {coffee.taste}</span>  </p>
+                      <p className="font-bold">Taste: <span className="text-[#5C5B5B] font-normal"> {coffee.taste}</span>  </p>
 
-                      <p>Cetegory: <span className="text-[#5C5B5B]">  {coffee.category}</span> </p>
+                      <p className="font-bold">Cetegory: <span className="text-[#5C5B5B] font-normal">  {coffee.category}</span> </p>
 
-                      <p>Details: <span className="text-[#5C5B5B]"> {coffee.details}</span> </p>
+                      <p className="font-bold">Details: <span className="text-[#5C5B5B] font-normal"> {coffee.details}</span> </p>
                   </div>
             </div>
           
