@@ -1,13 +1,12 @@
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/clientSide/Navbar/Navbar";
-import Footer from "../components/clientSide/Footer/Footer";
+
 
 const ErrorPage = () => {
   const navigate = useNavigate();
   return (
     <div className="">
-      <Navbar></Navbar>
+     
       <div className="container mx-auto px-8 lg:px-0">
          <div
           onClick={() => navigate(-1)}
@@ -21,7 +20,7 @@ const ErrorPage = () => {
               <img className="w-full" src="https://res.cloudinary.com/dqescabbl/image/upload/v1726472764/404_szd88c.gif" alt="" />
          </div>
       </div>
-      <Footer></Footer>
+    
     </div>
   );
 };
