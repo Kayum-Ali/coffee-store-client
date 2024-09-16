@@ -10,7 +10,7 @@ const FolloeInstragram = () => {
                      
                  </div>
 
-                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-10 px-8">
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-10 px-8 lg:px-0">
                       <div>
                          <img className="w-full" src="https://res.cloudinary.com/dqescabbl/image/upload/v1726460786/Rectangle_9_jehb5d.png" alt="" />
                       </div>

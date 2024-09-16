@@ -1,14 +1,14 @@
 
 
 import {
-    createBrowserRouter,
- 
-  } from "react-router-dom";
-import HomePage from "../Pages/clientSide/HomePage";
-import MainLayout from "../layouts/MainLayout";
+  createBrowserRouter,
+} from "react-router-dom";
 import AddCoffeePage from "../Pages/clientSide/AddCoffeePage";
+import HomePage from "../Pages/clientSide/HomePage";
 import UpdateCoffeePage from "../Pages/clientSide/UpdateCoffeePage";
 import CoffeeDetails from "../components/clientSide/CoffeeDatails/CoffeeDetails";
+import MainLayout from "../layouts/MainLayout";
+import ErrorPage from "../Pages/ErrorPage";
 
 
 
@@ -16,11 +16,12 @@ import CoffeeDetails from "../components/clientSide/CoffeeDatails/CoffeeDetails"
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: "/",
           element:  <HomePage></HomePage>,
-          loader: ()=> fetch('http://localhost:5000/coffee')
+          loader: ()=> fetch('https://coffee-store-server-nfs3.vercel.app/coffee')
         },
         {
           path: "/add-coffee",
@@ -29,12 +30,12 @@ import CoffeeDetails from "../components/clientSide/CoffeeDatails/CoffeeDetails"
         {
           path: "/update-coffee/:id",
           element: <UpdateCoffeePage></UpdateCoffeePage>,
-          loader: ({params})=> fetch(`http://localhost:5000/coffee/${params.id}`)
+          loader: ({params})=> fetch(`https://coffee-store-server-nfs3.vercel.app/coffee/${params.id}`)
         },
         {
           path: '/coffee-details/:id',
           element: <CoffeeDetails></CoffeeDetails>,
-          loader: ({params})=> fetch(`http://localhost:5000/coffee/${params.id}`)
+          loader: ({params})=> fetch(`https://coffee-store-server-nfs3.vercel.app/coffee/${params.id}`)
         }
 
       ]
