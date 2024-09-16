@@ -1,10 +1,12 @@
 import { BsFillCupHotFill } from "react-icons/bs";
 import { Link, useLoaderData } from "react-router-dom";
 import CoffeeCard from "../CoffeeCard/CoffeeCard";
+import { useState } from "react";
 
 
 const PopularProducts = () => {
     const coffees = useLoaderData()
+    const [coffeed, setCoffeed] = useState(coffees);
     return (
         <div className="bg-[url('https://res.cloudinary.com/dqescabbl/image/upload/v1726407930/1_lrwqi9.png')] bg-contain z-20">
             <div className="container mx-auto py-14">
@@ -16,9 +18,14 @@ const PopularProducts = () => {
                       </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 z-10 py-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 z-10 py-10 px-5 lg:px-0">
                     {
-                        coffees.map(coffee=> <CoffeeCard key={coffee._id} coffee={coffee}></CoffeeCard>)
+                        coffeed.map(coffee=> <CoffeeCard key={coffee._id}
+                             coffee={coffee}
+                             coffeed={coffeed}
+                             setCoffeed={setCoffeed}
+                             
+                             ></CoffeeCard>)
                     }
                   
 

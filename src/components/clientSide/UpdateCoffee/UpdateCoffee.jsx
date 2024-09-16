@@ -1,48 +1,52 @@
-import { FaLongArrowAltLeft } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2'
+import { FaLongArrowAltLeft } from "react-icons/fa";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const AddCoffee = () => {
-  const navigate = useNavigate()
-  
-  const handleSubmit = e =>{
-   
-    e.preventDefault();
-    const name= e.target.name.value;
-    const chef= e.target.chef.value;
-    const supplier= e.target.supplier.value;
-    const taste= e.target.taste.value;
-    const details= e.target.details.value;
-    const photo= e.target.photo.value;
-    const category= e.target.category.value;
-   
-    const newCoffee= { name, chef, supplier, taste, category, photo, details, }
-    // add new coffee to database
-    fetch('http://localhost:5000/coffee', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newCoffee),
-    }).then(res => res.json())
-     .then(data => {
-          if(data.insertedId){
+
+const UpdateCoffee = () => {
+    const coffee = useLoaderData()
+    const navigate = useNavigate()
+    const {_id, name, chef, supplier, taste, category, photo, details, }= coffee
+
+    const handleSubmit = e =>{
+        e.preventDefault();
+        const name= e.target.name.value;
+        const chef= e.target.chef.value;
+        const supplier= e.target.supplier.value;
+        const taste= e.target.taste.value;
+        const details= e.target.details.value;
+        const photo= e.target.photo.value;
+        const category= e.target.category.value;
+       
+        const updatedCoffee = { name, chef, supplier, taste, category, photo, details }
+        // add new coffee to database
+        fetch(`http://localhost:5000/coffee/${_id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedCoffee),
+        })
+        .then(res => res.json())
+         .then(data => {
             console.log(data)
-            Swal.fire({
-              title: 'success ',
-              text: 'Coffee added successfully  ',
-              icon: 'success',
-              confirmButtonText: 'Cool'
-            })
-            e.target.reset();
-           
-            
-          }
-     });
-  }
+              if(data.modifiedCount > 0){
+               
+                Swal.fire({
+                  title: 'success ',
+                  text: 'Coffee Updated successfully  ',
+                  icon: 'success',
+                  confirmButtonText: 'Cool'
+                })
+                e.target.reset();
+               
+                
+              }
+         });
+      }
     return (
-     <div>
-            <div className="bg-[url('https://res.cloudinary.com/dqescabbl/image/upload/v1726378592/11_dc6zmw.png')]">
+        <div>
+             <div className="bg-[url('https://res.cloudinary.com/dqescabbl/image/upload/v1726378592/11_dc6zmw.png')]">
       <div className="container mx-auto py-10 lg:px-28   ">
         {/* breadcumbs */}
         <div onClick={()=> navigate(-1)} className="flex gap-5 items-center w-max px-3 rounded-md text-2xl py-5 hover:bg-[#D2B48C]">
@@ -54,7 +58,7 @@ const AddCoffee = () => {
         <div className="bg-[#F4F3F0] rounded-md p-14">
           <div className="text-center lg:px-44 space-y-3">
             <h2 className="text-3xl font-bold text-[#374151]">
-              Add New Coffee
+             Update Existing Coffee Details
             </h2>
             <p className="raleway opacity-90">
               It is a long established fact that a reader will be distraceted by
@@ -75,6 +79,7 @@ const AddCoffee = () => {
                   required
                   
                   name="name"
+                  defaultValue={name}
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee name"
                 />
@@ -86,6 +91,7 @@ const AddCoffee = () => {
                 <input
                   type="text"
                   required
+                  defaultValue={chef}
                    name="chef"
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee chef"
@@ -98,6 +104,7 @@ const AddCoffee = () => {
                 <input
                   type="text"
                   required
+                  defaultValue={supplier}
                    name="supplier"
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee supplier"
@@ -109,6 +116,7 @@ const AddCoffee = () => {
                 </label>
                 <input
                   type="text"
+                  defaultValue={taste}
                   required
                    name="taste"
                   className="outline-none p-3 rounded-md raleway"
@@ -122,6 +130,7 @@ const AddCoffee = () => {
                 <input
                   type="text"
                   name="category"
+                  defaultValue={category}
                   required
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee category"
@@ -134,6 +143,7 @@ const AddCoffee = () => {
                 <input
                   type="text"
                   required
+                  defaultValue={details}
                   name="details"
                   className="outline-none p-3 rounded-md raleway"
                   placeholder="Enter coffee details"
@@ -142,10 +152,11 @@ const AddCoffee = () => {
             </div>
 
             <div className="flex flex-col space-y-2 w-full pt-3">
-                        <label className="text-2xl pl-2" htmlFor="">Photo</label>
+                        <label className="text-2xl pl-2" htmlFor="">Photo URL</label>
                         <input 
                         type="text"
                         required
+                        defaultValue={photo}
                         name="photo"
                          className="outline-none p-3 rounded-md raleway w-full"
                            placeholder="Enter photo URL"/>
@@ -153,17 +164,16 @@ const AddCoffee = () => {
 
              <div className="flex justify-center mt-3 text-2xl border border-[#331A15]  rounded-md">
 
-                <input type="submit" value={`Add Coffee`} className="bg-[#D2B48C]  rounded-md py-2.5 w-full"/>
+                <input type="submit" value={`Update Coffee`} className="bg-[#D2B48C]  rounded-md py-2.5 w-full"/>
               </div>
           </form>
         </div>
       </div>
            </div>
-   
-
             
-    </div>
+            
+        </div>
     );
 };
 
-export default AddCoffee;
+export default UpdateCoffee;
